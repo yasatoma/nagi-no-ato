@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <meta name="theme-color" content="#101f27"><meta name="description" content="凪のあとに、声が残る。嵐に閉ざされた海上観測所で、あなたは残された声を聴く。オリジナル・ミステリービジュアルノベル。">
+ <title>凪のあとに、声が残る</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<main id="app">
+ <div id="background" class="background" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div id="rain" aria-hidden="true"></div>
+ <section id="title-screen" aria-label="タイトル画面">
+  <div class="brandline"><span class="emblem">◈</span> SHIOMI SOUND ARCHIVE <span class="line"></span> ORIGINAL NOVEL</div>
+  <div class="title-copy"><p class="eyebrow">波がやんでも、あの声は消えない。</p><h1>凪のあとに、<br><span>声が残る</span><i>。</i></h1><p class="roman">AFTER THE QUIET, A VOICE REMAINS</p><p class="intro">嵐の観測所。六人の夜。<br>残された音を、最後まで聴いて。</p></div>
+  <nav class="title-actions" aria-label="メインメニュー"><button id="new-game" class="primary"><span>物語をはじめる</span><span>→</span></button><button id="continue-game">つづきから <span>CONTINUE</span></button><div class="title-grid"><button data-panel="load">記録をひらく</button><button data-panel="endings">結末の栞</button><button data-panel="transfer">引き継ぎ</button><button data-panel="settings">設定</button></div></nav>
+  <footer class="title-footer"><button data-panel="about">作品・操作について</button><span>HEADPHONES RECOMMENDED <b> · </b> v1.0</span></footer>
+ </section>
+ <section id="game-screen" hidden aria-label="本編">
+  <header class="game-top"><button id="menu-button" aria-label="メニューを開く">☰ <span>MENU</span></button><div><p id="chapter"></p><p id="location"></p></div><button data-panel="evidence" id="evidence-button">記録帳 <span id="evidence-count">0</span></button></header>
+  <div id="portrait-wrap" aria-hidden="true"><img id="portrait" alt=""></div>
+  <div id="chapter-card" aria-hidden="true"></div>
+  <div class="reading-area"><div id="speaker-box"><span id="speaker"></span><small id="speaker-role"></small></div><div id="dialogue" role="button" tabindex="0" aria-label="本文を読み進める"><p id="text"></p><span class="advance-mark" aria-hidden="true">◇</span><span id="read-status"></span></div><div id="choices" hidden aria-label="選択肢"></div><nav class="quickbar" aria-label="読書操作"><button data-panel="backlog">履歴</button><button data-panel="save">セーブ</button><button data-panel="load">ロード</button><button id="auto" aria-pressed="false">オート</button><button id="skip" aria-pressed="false">既読スキップ</button><button data-panel="settings" aria-label="設定">⚙</button></nav></div>
+ </section>
+ <section id="ending-screen" hidden aria-label="読了画面"><p class="eyebrow">夜を越えて、残ったもの</p><div class="ending-rule"></div><p id="ending-number"></p><h2 id="ending-name"></h2><p id="ending-subtitle"></p><p class="ending-thanks">『凪のあとに、声が残る』<br>読んでくださって、ありがとうございました。</p><button id="return-choice">直前の選択から読む</button><button id="ending-title" class="primary">タイトルへ</button><button data-panel="endings">結末の栞をひらく</button></section>
+</main>
+<dialog id="panel"><header class="panel-header"><div><p class="eyebrow" id="panel-kicker">SHIOMI SOUND ARCHIVE</p><h2 id="panel-title"></h2></div><button id="close-panel" aria-label="閉じる">×</button></header><div id="panel-body"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript>この作品を遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
+<script type="module" src="src/app.js"></script>
+</body></html>

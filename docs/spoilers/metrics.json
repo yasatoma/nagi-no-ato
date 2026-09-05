@@ -1,0 +1,33 @@
+{
+  "nodes": 57,
+  "paragraphs": 1543,
+  "totalCharacters": 48630,
+  "states": 5729,
+  "endings": {
+    "storm": {
+      "paths": 2,
+      "min": 16563,
+      "max": 16569
+    },
+    "glass": {
+      "paths": 280,
+      "min": 27399,
+      "max": 31593
+    },
+    "ash": {
+      "paths": 128,
+      "min": 35180,
+      "max": 38118
+    },
+    "shore": {
+      "paths": 384,
+      "min": 35275,
+      "max": 40061
+    },
+    "voice": {
+      "paths": 128,
+      "min": 38484,
+      "max": 41422
+    }
+  }
+}

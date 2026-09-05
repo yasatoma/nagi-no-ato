@@ -1,0 +1,33 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {story,endings} from '../src/engine.js';
+const base='http://localhost:4173';fs.mkdirSync('test-results',{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const errors=[],badResponses=[];
+async function make(width=1440,height=900){const ctx=await browser.newContext({viewport:{width,height},deviceScaleFactor:1});const page=await ctx.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)badResponses.push(r.url());});return {ctx,page};}
+async function instant(page){await page.locator('[data-panel="settings"]:visible').first().click();await page.locator('#setting-speed').fill('0');await page.locator('#setting-speed').dispatchEvent('input');await page.locator('#close-panel').click();}
+async function untilChoice(page){const result=await page.evaluate(()=>{let count=0;while(count++<3000&&document.getElementById('choices').hidden&&document.getElementById('ending-screen').hidden){document.getElementById('dialogue').click();}return {count,choices:[...document.querySelectorAll('#choices button')].filter(b=>!b.disabled).map(b=>b.textContent),ending:!document.getElementById('ending-screen').hidden};});if(result.choices.some(c=>c.includes('窓辺の資料'))){await select(page,'窓辺の資料');return untilChoice(page);}return result;}
+async function select(page,part){await page.locator('button').filter({hasText:new RegExp(part==='進める'?'^進める$':part)}).click();}
+const {ctx,page}=await make();await page.goto(base);await page.waitForTimeout(800);await page.screenshot({path:'test-results/title-desktop.png'});await instant(page);await page.locator('#new-game').click();await page.locator('#dialogue').click({clickCount:7});await page.waitForTimeout(2800);await page.screenshot({path:'test-results/game-desktop.png'});
+await page.locator('[data-panel="save"]').first().click();await page.locator('.slot').first().click();await page.locator('#close-panel').click();const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('nagi.archive.v1')).slots[0].state);await page.locator('#dialogue').click({clickCount:4});await page.locator('#game-screen [data-panel="load"]').click();await page.locator('.panel-grid .slot').first().click();await select(page,'進める');const restoredText=await page.locator('#text').innerText();assert.equal(restoredText,story[saved.node].lines[saved.line].text);
+await page.reload();await page.locator('#continue-game').click();assert.equal(await page.locator('#text').innerText(),restoredText);
+await page.locator('#menu-button').click();await page.locator('#panel-body').getByRole('button',{name:'引き継ぎ',exact:true}).click();await select(page,'コードを発行');await page.waitForFunction(()=>document.getElementById('export-code').value.length>0);const code=await page.locator('#export-code').inputValue();await page.locator('#close-panel').click();
+const {ctx:mobileCtx,page:mobile}=await make(390,844);await mobile.goto(base);await mobile.waitForTimeout(800);await mobile.screenshot({path:'test-results/title-mobile.png'});await mobile.locator('[data-panel="transfer"]').first().click();await mobile.locator('#import-code').fill(code.slice(0,-1)+'!');await select(mobile,'コードを確かめる');assert.ok((await mobile.locator('[role="alert"]').innerText()).length);await mobile.locator('#import-code').fill(code);await select(mobile,'コードを確かめる');await select(mobile,'進める');await mobile.locator('#dialogue').click();await mobile.waitForTimeout(2800);await mobile.screenshot({path:'test-results/game-mobile.png'});assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+await instant(mobile);await untilChoice(mobile);await mobile.waitForTimeout(2800);await mobile.screenshot({path:'test-results/choices-mobile.png'});await select(mobile,'昔の見学会');
+await untilChoice(page);await select(page,'昔の見学会');await untilChoice(page);await select(page,'館内に残り');await untilChoice(page);await select(page,'放送設備');await untilChoice(page);await select(page,'事務室');await untilChoice(page);await select(page,'時計と再生履歴');await untilChoice(page);await select(page,'貸出票と記録');await untilChoice(page);await select(page,'紬と原本');await untilChoice(page);await select(page,'最後まで聴く');const result=await untilChoice(page);assert.ok(result.ending);assert.equal(await page.locator('#ending-name').innerText(),endings.voice.name);await page.screenshot({path:'test-results/ending-desktop.png'});
+// Test alternative endings through actual full UI routes, in isolated browser storage.
+for(const route of ['storm','glass','ash','shore']){
+ const {ctx:c,page:p}=await make();await p.goto(base);await instant(p);await p.locator('#new-game').click();await untilChoice(p);await select(p,'目録作り');await untilChoice(p);
+ if(route==='storm'){await select(p,'外の橋');await untilChoice(p);await select(p,'それでも玄関');}
+ else{await select(p,'館内に残り');await untilChoice(p);await select(p,'放送設備');await untilChoice(p);await select(p,'事務室');await untilChoice(p);
+  if(route==='glass'){await select(p,'生存の証拠');await untilChoice(p);await select(p,'撤回しない');}
+  else{await select(p,'時計と再生履歴');await untilChoice(p);await select(p,'貸出票と記録');await untilChoice(p);await select(p,route==='ash'?'今すぐ問い詰める':'保護を黒田と灯');if(route==='shore'){await untilChoice(p);await select(p,'今夜はここで止め');}}
+ }
+ const r=await untilChoice(p);assert.ok(r.ending,route);assert.equal(await p.locator('#ending-name').innerText(),endings[route].name);await c.close();
+}
+// Assets decode and alpha, sound actually produces nonzero audio through OfflineAudioContext.
+const assetCheck=await page.evaluate(async()=>{const files=['island','lounge','archive','studio','corridor','dawn','tsumugi','tamaki','kuroda','akari','makabe'];return Promise.all(files.map(async n=>{const im=new Image();im.src=`assets/${n}.png`;await im.decode();const c=document.createElement('canvas');c.width=im.width;c.height=im.height;c.getContext('2d').drawImage(im,0,0);return {name:n,width:im.width,height:im.height,corner:[...c.getContext('2d').getImageData(0,0,1,1).data]};}));});
+assert.ok(assetCheck.every(a=>a.width>0));fs.writeFileSync('test-results/assets.json',JSON.stringify(assetCheck,null,2));
+assert.deepEqual(errors,[]);assert.deepEqual(badResponses,[]);
+fs.writeFileSync('test-results/browser-summary.json',JSON.stringify({status:'passed',endings:5,desktop:'1440x900',mobile:'390x844',transferCodeLength:code.length,errors,badResponses},null,2));console.log('Browser checks passed. All five endings, save/load, reload, transfer, PC/mobile, assets.');await ctx.close();await mobileCtx.close();await browser.close();

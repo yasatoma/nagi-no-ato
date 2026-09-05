@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "asset": "assets/tamaki.png",
+      "prompt": "Use case: illustration-story. Asset type: individual standing character sprite for original Japanese mystery visual novel. A Japanese woman age 42, dark hair neatly tied in a low bun, quiet tired caring expression, taupe work dress and dark olive apron, sleeves rolled neatly, standing with hands folded. Three-quarter length portrait head to below knees, entire head and both hands inside frame, generous margins. Refined hand painted anime character illustration with natural adult proportions, delicate realistic face, softly shaded linework, restrained desaturated slate teal warm ivory and amber palette. Elegant painterly rendering, subtle warm light on face. Genuinely transparent background, isolated single character, no backdrop, no scenery, no text, no watermark. Entirely original."
+    },
+    {
+      "asset": "assets/kuroda.png",
+      "prompt": "Use case: illustration-story. Asset type: individual standing character sprite for original Japanese mystery visual novel. A Japanese man age 54, short salt and pepper hair, light stubble, sturdy build, weathered kind skeptical face, charcoal blue maintenance work jacket, carrying a small canvas tool pouch. Three-quarter length portrait head to below knees, entire head and both hands inside frame, generous margins. Refined hand painted anime character illustration with natural adult proportions, delicate realistic face, softly shaded linework, restrained desaturated slate teal warm ivory and amber palette. Elegant painterly rendering, subtle warm light on face. Genuinely transparent background, isolated single character, no backdrop, no scenery, no text, no watermark. Entirely original."
+    },
+    {
+      "asset": "assets/akari.png",
+      "prompt": "Use case: illustration-story. Asset type: individual standing character sprite for original Japanese mystery visual novel. A Japanese woman age 29, short auburn bob tucked behind one ear, observant confident expression, muted rust blouse and cream trench coat, holding a pencil and reporter notebook. Three-quarter length portrait head to below knees, entire head and both hands inside frame, generous margins. Refined hand painted anime character illustration with natural adult proportions, delicate realistic face, softly shaded linework, restrained desaturated slate teal warm ivory and amber palette. Elegant painterly rendering, subtle warm light on face. Genuinely transparent background, isolated single character, no backdrop, no scenery, no text, no watermark. Entirely original."
+    },
+    {
+      "asset": "assets/makabe.png",
+      "prompt": "Use case: illustration-story. Asset type: individual standing character sprite for original Japanese mystery visual novel. A Japanese man age 61, neatly combed silver hair, clean shaven, restrained polite authoritative expression, dark navy waistcoat over white shirt and muted tie, holding a ceramic coffee cup. Three-quarter length portrait head to below knees, entire head and both hands inside frame, generous margins. Refined hand painted anime character illustration with natural adult proportions, delicate realistic face, softly shaded linework, restrained desaturated slate teal warm ivory and amber palette. Elegant painterly rendering, subtle warm light on face. Genuinely transparent background, isolated single character, no backdrop, no scenery, no text, no watermark. Entirely original."
+    },
+    {
+      "asset": "assets/archive.png",
+      "prompt": "Use case: illustration-story. Asset type: Japanese mystery visual novel background landscape 1536x1024. An intimate archive office in an old coastal acoustic observatory at night. Metal and wooden shelves of neatly numbered unlabelled reel boxes, folders and documents, wooden desk with laptop and small reel recorder, amber task lamp, two chairs, rain on narrow window. Beautiful detailed hand painted anime cinematic background, realistic architecture, restrained slate teal and warm ivory amber palette, painterly fine grain, atmospheric original artwork. No people, no text, no logos, no watermark."
+    },
+    {
+      "asset": "assets/studio.png",
+      "prompt": "Use case: illustration-story. Asset type: Japanese mystery visual novel background landscape 1536x1024. Small empty vintage acoustic recording room, thick soundproof wooden door at left, acoustic felt walls, heavy wooden worktable with vintage reel tape machine, empty office chair, ceramic cup on table, high narrow window with rain. Quiet orderly room, no people, no body, no crime details. Beautiful detailed hand painted anime cinematic background, realistic architecture, restrained slate teal and warm ivory amber palette, painterly fine grain, atmospheric original artwork. No people, no text, no logos, no watermark."
+    },
+    {
+      "asset": "assets/corridor.png",
+      "prompt": "Use case: illustration-story. Asset type: Japanese mystery visual novel background landscape 1536x1024. Curved corridor of a vintage coastal observatory, stone and dark wood walls, thick closed soundproof door at far end, small intercom and electric recording playback control panel at right, low emergency lights and warm wall sconces, rain at left window. Beautiful detailed hand painted anime cinematic background, realistic architecture, restrained slate teal and warm ivory amber palette, painterly fine grain, atmospheric original artwork. No people, no text, no logos, no watermark."
+    },
+    {
+      "asset": "assets/dawn.png",
+      "prompt": "Use case: illustration-story. Asset type: Japanese mystery visual novel background landscape 1536x1024. View from an old seaside railway waiting room looking through broad windows at dawn, empty wooden bench, two warm canned teas on sill, soft apricot dawn light, quiet pale sky and distant coastal town, peaceful hopeful melancholy. No visible text. Beautiful detailed hand painted anime cinematic background, realistic architecture, restrained slate teal and warm ivory amber palette, painterly fine grain, atmospheric original artwork. No people, no text, no logos, no watermark."
+    },
+    {
+      "asset": "assets/island.png",
+      "prompt": "Use case: illustration-story. Asset type: original Japanese mystery visual novel background, landscape 1536x1024. An isolated 1930s coastal acoustic observatory built on a small rocky island at night in a storm, viewed from a sheltered landing, narrow enclosed metal footbridge leading to the warm windows of a round stone building and a taller listening tower; blue grey ocean spray, one tiny amber lamp by a door, clouds and rain, elegant atmospheric hand painted anime cinematic background, detailed architectural drawing, restrained desaturated teal slate and warm ivory palette, haunting but inviting, beautiful painterly grain. No people, no text, no watermark, no logos. Fill the entire image; dramatic composition with building toward right, dark sky left for title overlay. Entirely original."
+    },
+    {
+      "asset": "assets/lounge.png",
+      "prompt": "Use case: illustration-story. Asset type: visual novel interior background. Landscape 1536x1024. Interior of an old Japanese offshore acoustic observatory common room at stormy night. Warm brass pendant light over a broad old oak table with two ivory ceramic mugs and paper folders, large seawater streaked windows show teal dark ocean, analog pendulum wall clock, bookshelves, radio on console, open corridor at right. No people. Beautiful hand painted anime cinematic background, restrained desaturated slate teal, warm amber and ivory palette, detailed believable architecture, fine painterly grain, inviting melancholy and quiet mystery. No text, no watermark, no logos. Entirely original."
+    },
+    {
+      "asset": "assets/tsumugi.png",
+      "prompt": "Use case: illustration-story. Asset type: original character sprite for Japanese mystery visual novel. A Japanese woman age 26, thoughtful gentle but self-possessed expression, shoulder-length straight dark brown hair tucked behind one ear, fine round bronze eyeglasses, ivory cable knit turtleneck under long desaturated teal cardigan, charcoal skirt, holds a small indigo archival notebook at her waist with both hands. Three-quarter length standing portrait from head to below knees, full head and both arms visible with generous margin, face toward viewer, body slightly angled. Refined hand painted anime character illustration, natural adult proportions, delicate clean linework, softly shaded, restrained slate teal amber ivory palette, beautiful painterly detail. Genuinely transparent background; isolated single character, no scenery, no text, no watermarks, no other characters. Entirely original design."
+    }
+  ]
+}
