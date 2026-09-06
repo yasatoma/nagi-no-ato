@@ -2,7 +2,7 @@ import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {story,endings} from '../src/engine.js';
-const base='http://localhost:4173';fs.mkdirSync('test-results',{recursive:true});
+const base=process.env.GAME_BASE_URL || 'http://localhost:4173';fs.mkdirSync('test-results',{recursive:true});
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const errors=[],badResponses=[];
 async function make(width=1440,height=900){const ctx=await browser.newContext({viewport:{width,height},deviceScaleFactor:1});const page=await ctx.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)badResponses.push(r.url());});return {ctx,page};}
