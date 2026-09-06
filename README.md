@@ -6,6 +6,8 @@
 
 ## 遊び方
 
+**[ブラウザで遊ぶ（GitHub Pages）](https://yasatoma.github.io/nagi-no-ato/)** — インストール不要です。
+
 Node.js 22以降が入った環境で、このフォルダーから実行します。**プレイに npm install は不要**です。
 
 ```powershell
@@ -72,7 +74,7 @@ docs/ART-PROMPTS.json  使用した画像生成プロンプト
 docs/spoilers/        真相設計・監査・分岐別の計測（ネタバレあり）
 ```
 
-ローカルサーバーは本編・素材だけを配信し、制作資料・テスト・Git情報は配信しません。静的ホスティングする場合も `index.html`、`src/`、`assets/` を対象とします。本作はまだ一般公開しておらず、GitHubへのpushもしていません。
+ローカルサーバーは本編・素材だけを配信し、制作資料・テスト・Git情報は配信しません。GitHub Pagesでも `index.html`、`src/`、`assets/` のみを配信します。`main` へのpush時に自動テストを実行して公開します。公開リポジトリ内の制作資料にはネタバレが含まれます。
 
 ## 検証
 
